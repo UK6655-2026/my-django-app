@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>Todo List</title>
+</head>
+<body>
+
+    <h1>Todo List</h1>
+
+    <form method="POST">
+        {% csrf_token %}
+
+        {{ form.as_p }}
+
+        <button type="submit">Todoを追加</button>
+    </form>
+
+    <hr>
+
+    <ul>
+        {% for todo in todos %}
+            <li>{{ todo.title }}</li>
+        {% empty %}
+            <li>Todoはありません</li>
+        {% endfor %}
+    </ul>
+
+</body>
+</html>
