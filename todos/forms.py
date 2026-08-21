@@ -6,3 +6,11 @@ class TodoForm(forms.ModelForm):
     class Meta:
         model = Todo
         fields = ["title"]
+
+        widgets = {
+            "title": forms.TextInput(
+                attrs={
+                    "placeholder": "Todoのタイトルを入力してください"
+                }
+            )
+        }
