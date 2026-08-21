@@ -23,6 +23,11 @@
             <li>
                 {{ todo.title }}
 
+                <a href="{% url 'todo_edit' todo.id %}">
+                    編集
+                </a>
+
+                <span>  |  </span>
                 <a href="{% url 'todo_delete' todo.id %}">
                     削除
                 </a>
