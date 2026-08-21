@@ -43,3 +43,11 @@ def todo_edit(request, todo_id):
         "form": form,
         "todo": todo,
     })
+
+def todo_toggle(request, todo_id):
+    todo = Todo.objects.get(id=todo_id)
+
+    todo.completed = not todo.completed
+    todo.save()
+
+    return redirect("todo_list")

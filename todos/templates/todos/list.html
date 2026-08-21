@@ -21,16 +21,33 @@
     <ul>
         {% for todo in todos %}
             <li>
-                {{ todo.title }}
 
-                <a href="{% url 'todo_edit' todo.id %}">
-                    編集
+                <a href="{% url 'todo_toggle' todo.id %}">
+                    {% if todo.completed %}
+                        ☑
+                    {% else %}
+                        ☐
+                    {% endif %}
                 </a>
 
-                <span>  |  </span>
-                <a href="{% url 'todo_delete' todo.id %}">
-                    削除
-                </a>
+                {% if todo.completed %}
+                    <s>{{ todo.title }}</s>
+                {% else %}
+                    {{ todo.title }}
+                {% endif %}
+
+                <span class="todo-actions">
+
+                    <a href="{% url 'todo_edit' todo.id %}">
+                        編集
+                    </a>
+
+                    <a href="{% url 'todo_delete' todo.id %}">
+                        削除
+                    </a>
+
+                </span>
+
             </li>
         {% empty %}
             <li>Todoはありません</li>
