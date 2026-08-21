@@ -20,3 +20,9 @@ def todo_list(request):
         "todos": todos,
         "form" : form,
     })
+
+def todo_delete(request, todo_id):
+    todo = Todo.objects.get(id=todo_id)
+    todo.delete()
+
+    return redirect("todo_list")

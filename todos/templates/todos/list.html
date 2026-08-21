@@ -20,7 +20,13 @@
 
     <ul>
         {% for todo in todos %}
-            <li>{{ todo.title }}</li>
+            <li>
+                {{ todo.title }}
+
+                <a href="{% url 'todo_delete' todo.id %}">
+                    削除
+                </a>
+            </li>
         {% empty %}
             <li>Todoはありません</li>
         {% endfor %}
